@@ -31,6 +31,10 @@ public class FilteredReactiveRetryPolicy implements ReactiveRetryPolicy {
         return filter(retryPolicy.retry(), toRetryOn);
     }
 
+    @Override
+    public int maxAllowedRetries() {
+        return retryPolicy.maxAllowedRetries();
+    }
     static Retry filter(
             Retry retry,
             Predicate<Throwable> toRetryOn){
